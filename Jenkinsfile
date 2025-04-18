@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build And Push Docker Image') {
             steps {
-                script {
+                withDockerRegistry(credentialsId: 'caramenSuaChua', url: '') {
                     sh "docker build -t ${IMAGE_NAME} ."
                     sh "docker push ${IMAGE_NAME}"
                 }
