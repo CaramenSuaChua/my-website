@@ -19,17 +19,17 @@ pipeline {
             }
         }
 
-        // stage('Deploy to Docker Swarm') {
-        //     steps {
-        //         sshagent(['ec2-ssh-key']) {
-        //             sh """
-        //                 ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} '
-        //                 sudo docker service update --image=${IMAGE_NAME} my-website
-        //                 '
-        //             """
-        //         }
-        //     }
-        // }
+        stage('Deploy to Docker Swarm') {
+            steps {
+                sshagent(['server-dev']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} '
+                        sudo docker service update --image=${IMAGE_NAME} my-website
+                        '
+                    """
+                }
+            }
+        }
 
     }
 }
