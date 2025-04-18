@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build And Push Docker Image') {
             steps {
-                withDockerRegistry(credentialsId: 'caramenSuaChua', url: '') {
+                withDockerRegistry(credentialsId: 'docker-hub2', url: '') {
                     sh "docker build -t ${IMAGE_NAME} ."
                     sh "docker push ${IMAGE_NAME}"
                 }
