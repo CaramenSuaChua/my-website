@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "caramensuachua/my-website"
         DOCKER_REGISTRY = "docker.io"
         EC2_USER = "ubuntu"
-        EC2_IP = "13.229.126.209"
+        EC2_IP = "54.169.191.228"
     }
 
     stages {
@@ -25,7 +25,6 @@ pipeline {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} '
                         sudo su
-                        docker service create --name my-website --replicas 2 caramensuachua/my-website
                         docker service update --image=${IMAGE_NAME} my-website
                         '
                     """
