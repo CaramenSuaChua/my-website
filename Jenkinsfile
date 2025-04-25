@@ -22,7 +22,11 @@ pipeline {
         stage('Deploy to Docker Swarm') {
             steps {
                 sshagent(['server-dev']) {
-                    echo 'done'
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} '
+                        sudo docker service update --image=${IMAGE_NAME} my-website
+                        '
+                    """
                 }
             }
         }
