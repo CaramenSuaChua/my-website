@@ -1,0 +1,7 @@
+services:
+  my-client:
+    container_name: my-client
+    build: ./
+    restart: always
+    ports:
+      - 3000:80

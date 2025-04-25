@@ -17,13 +17,7 @@ RUN npm run build
 # -------------------------------
 
 # Sử dụng Nginx để chạy ứng dụng
-FROM nginx:alpine
-
-# Xóa cấu hình mặc định
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Tạo file cấu hình mới
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+FROM nginx:1.23
 
 # Copy file build vào thư mục phục vụ của Nginx
 COPY --from=build /app/build /usr/share/nginx/html
