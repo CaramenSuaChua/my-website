@@ -24,7 +24,9 @@ pipeline {
                 sshagent(['server-dev']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_IP} '
-                        sudo docker service update --image=${IMAGE_NAME} my-website
+                        sudo su
+                        docker service create --name my-website --replicas 2 caramensuachua/my-website
+                        docker service update --image=${IMAGE_NAME} my-website
                         '
                     """
                 }
