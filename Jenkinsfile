@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "caramensuachua/my-website"
         DOCKER_REGISTRY = "docker.io"
         EC2_USER = "ubuntu"
-        EC2_IP = "172.31.30.198"
+        EC2_IP = "13.229.126.209"
     }
 
     stages {
